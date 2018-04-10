@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock, Paper, Scissors!</title>
+	</head>
+
+	<body>
+		<script>
+			function computerPlay() {
+				let choosen = Math.floor(Math.random() * Math.floor(3));
+
+				switch(choosen) {
+					case 0:
+						return "Rock";
+						break;
+					case 1:
+						return "Paper";
+						break;
+					case 2:
+						return "Scissors";
+						break;
+				}
+
+				console.log(choosen);
+			}
+
+			function playRound(playerSelection, computerSelection) {
+				if(playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "rock" ||
+					playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "paper" ||
+					playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "scissors") {
+						return "No one wins!";
+					} else if(playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "scissors" ||
+						playerSelection.toLowerCase() === "paper" && computerSelection.toLowerCase() === "rock" ||
+						playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper") {
+						return "Nice! You won this round.";
+					} else {
+					    return "Oh no! You lost this round.";
+					}
+				}
+
+			function game() {
+				let playerScore = 0;
+				let computerScore = 0;
+
+				for(let i = 0; i < 5; i++) {
+					let msg = playRound(prompt("Rock, Paper or Scissors?"), computerPlay());
+
+					if(msg === "Nice! You won this round.") {
+						playerScore+= 1;
+					} else if(msg === "Oh no! You lost this round.") {
+						computerScore+= 1;
+					}
+
+					console.log(msg);
+				}
+
+				if(computerScore > playerScore) {
+					console.log("The Computer won the game!");
+				} else if(playerScore > computerScore) {
+					console.log("You won the game!");
+				} else {
+					console.log("No one wins the game!");
+				}
+			}
+
+			game();
+
+		</script>
+	</body>
+</html>
